@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createRef</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <!-- jsx转js -->
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+<script type="text/babel">
+  class Demo extends React.Component {
+    // 存储节点的容器，只能存储一个，专人专用
+    myRef = React.createRef()
+
+    showData = () => {
+      alert(this.myRef.current.value)
+    }
+    showData2 = () => {
+      alert(this.input2.value)
+    }
+
+    render() {
+      return (
+        <div>
+          <input ref={this.myRef} type="text" placeholder="点击按钮提示数据" />
+          <button onClick={this.showData}>点我提示数据</button>
+          <input
+            ref={(c) => (this.input2 = c)}
+            onBlur={this.showData2}
+            type="text"
+            placeholder="失去焦点提示数据"
+          />
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Demo />, document.getElementById('app'))
+</script>
