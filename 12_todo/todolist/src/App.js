@@ -12,12 +12,16 @@ export default class App extends Component {
       { id: '003', name: '敲代码', done: false },
     ],
   }
+  addTodo = (todo) => {
+    console.log(todo)
+    this.setState({ todos: [todo, ...this.state.todos] })
+  }
   render() {
     const { todos } = this.state
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header />
+          <Header addTodo={this.addTodo} />
           <List todos={todos} />
           <Footer />
         </div>
