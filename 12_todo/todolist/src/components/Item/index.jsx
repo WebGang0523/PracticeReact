@@ -31,7 +31,7 @@ export default class Item extends Component {
         <label>
           <input
             type="checkbox"
-            defaultChecked={todo.done}
+            checked={todo.done}
             onChange={this.handleChecked(todo.id)}
           />
           <span>{todo.name}</span>
