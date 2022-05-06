@@ -8,6 +8,11 @@ export default class Item extends Component {
       this.setState({ mouse: flag })
     }
   }
+  handleChecked = (id) => {
+    return (event) => {
+      this.props.updateTodo(id, event.target.checked)
+    }
+  }
   render() {
     const { todo } = this.props
     const { mouse } = this.state
@@ -18,7 +23,11 @@ export default class Item extends Component {
         onMouseLeave={this.handleMouse(false)}
       >
         <label>
-          <input type="checkbox" defaultChecked={todo.done} />
+          <input
+            type="checkbox"
+            defaultChecked={todo.done}
+            onChange={this.handleChecked(todo.id)}
+          />
           <span>{todo.name}</span>
         </label>
         <button
