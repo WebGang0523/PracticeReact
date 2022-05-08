@@ -19,7 +19,11 @@ export default class Messages extends Component {
             return (
               <li key={message.id}>
                 {/* <Link to={`/home/messages/${message.id}`}>{message.title}</Link> */}
-                <Link to={`/home/messages/detail?id=${message.id}`}>
+                {/* <Link to={`/home/messages/detail?id=${message.id}`}>
+                  {message.title}
+                </Link> */}
+
+                <Link to={`/home/messages/detail`} state={{ id: message.id }}>
                   {message.title}
                 </Link>
               </li>
