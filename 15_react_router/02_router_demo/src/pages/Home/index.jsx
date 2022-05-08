@@ -20,7 +20,7 @@ export default class Home extends Component {
           </ul>
           <Routes>
             <Route path="/news" element={<News />} />
-            <Route path="/messages" element={<Messages />} />
+            <Route path="/messages/*" element={<Messages />} />
             <Route path="/" element={<Navigate to="/home/news" />} />
           </Routes>
         </div>
