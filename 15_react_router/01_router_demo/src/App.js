@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Header from './components/Header'
@@ -34,8 +39,9 @@ export default class App extends Component {
               <div className="panel">
                 <div className="panel-body">
                   <Routes>
-                    <Route path="/home" element={<About />} />
-                    <Route path="/about" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/" exact element={<Navigate to="/about" />} />
                   </Routes>
                 </div>
               </div>
