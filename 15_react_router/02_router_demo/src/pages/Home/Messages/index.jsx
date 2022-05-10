@@ -10,6 +10,9 @@ export default class Messages extends Component {
       { id: '03', title: '消息3' },
     ],
   }
+
+  replaceShow = () => {}
+
   render() {
     const { messages } = this.state
     return (
@@ -18,22 +21,24 @@ export default class Messages extends Component {
           {messages.map((message) => {
             return (
               <li key={message.id}>
-                {/* <Link to={`/home/messages/${message.id}`}>{message.title}</Link> */}
+                <Link to={`/home/messages/${message.id}`}>{message.title}</Link>
+                &nbsp;<button>push查看</button>
+                &nbsp;<button onClick={this.replaceShow}>replace查看</button>
                 {/* <Link to={`/home/messages/detail?id=${message.id}`}>
                   {message.title}
                 </Link> */}
-
+                {/* 
                 <Link to={`/home/messages/detail`} state={{ id: message.id }}>
                   {message.title}
-                </Link>
+                </Link> */}
               </li>
             )
           })}
         </ul>
         <hr />
         <Routes>
-          {/* <Route path=":id" element={<Detail />} /> */}
-          <Route path="detail" element={<Detail />} />
+          <Route path=":id" element={<Detail />} />
+          {/* <Route path="detail" element={<Detail />} /> */}
         </Routes>
       </div>
     )
