@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {
+  createDecrAction,
+  createIncrAction,
+  createIncrAsyncAction,
+} from '../../redux/count_action'
 
-export default class Count extends Component {
+class Count extends Component {
   incr = () => {
     const { add } = this.props
     const { value } = this.selectEle
@@ -45,3 +51,9 @@ export default class Count extends Component {
     )
   }
 }
+
+export default connect((state) => ({ sum: state }), {
+  add: createIncrAction,
+  sub: createDecrAction,
+  addAsync: createIncrAsyncAction,
+})(Count)
