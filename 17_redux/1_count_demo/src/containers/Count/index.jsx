@@ -4,7 +4,7 @@ import {
   createDecrAction,
   createIncrAction,
   createIncrAsyncAction,
-} from '../../redux/count_action'
+} from '../../redux/actions/count'
 
 class Count extends Component {
   incr = () => {
@@ -36,7 +36,8 @@ class Count extends Component {
   render() {
     return (
       <div>
-        <h2>当前求和为：{this.props.sum}</h2>
+        <h2>我是Count组件</h2>
+        <h4>当前求和为：{this.props.sum}</h4>
         <select ref={(c) => (this.selectEle = c)}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -47,13 +48,26 @@ class Count extends Component {
         <button onClick={this.decr}>-</button> &nbsp;
         <button onClick={this.incrIfOdd}>当前和为奇数再加</button> &nbsp;
         <button onClick={this.incrAsync}>异步加</button>
+        <h2>Person组件的人</h2>
+        <ul>
+          {this.props.persons.map((personObj) => {
+            return (
+              <li key={personObj.id}>
+                名字--{personObj.name},年龄--{personObj.age}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
 }
 
-export default connect((state) => ({ sum: state }), {
-  add: createIncrAction,
-  sub: createDecrAction,
-  addAsync: createIncrAsyncAction,
-})(Count)
+export default connect(
+  (state) => ({ sum: state.sum, persons: state.persons }),
+  {
+    add: createIncrAction,
+    sub: createDecrAction,
+    addAsync: createIncrAsyncAction,
+  }
+)(Count)

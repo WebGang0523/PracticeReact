@@ -1,4 +1,4 @@
-import { INCR, DECR } from './constant'
+import { INCR, DECR } from '../constant'
 
 export default function countReducer(preState, action) {
   if (preState === undefined) preState = 100

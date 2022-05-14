@@ -1,4 +1,4 @@
-import { INCR, DECR } from './constant'
+import { INCR, DECR } from '../constant'
 
 export const createIncrAction = (data) => ({ type: INCR, data })
 
